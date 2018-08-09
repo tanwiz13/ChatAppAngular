@@ -1,0 +1,27 @@
+#sidebar{
+    width:30%;
+    position:absolute;
+    background-color: rgb(160, 71, 141);
+    height:605px;
+    color:beige;
+}
+#chatdiv{
+    width:70%;
+    float: right;
+    position: relative;
+}
+#chathistory{
+    background-color: beige;
+    height:570px;
+}
+#messagediv{
+    top:580px;
+}
+#messagebox{
+    height: 30px;
+    float:left;
+}
+#messagebutton{
+    height: 40px;
+    float:right;
+}

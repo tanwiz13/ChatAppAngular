@@ -1,0 +1,18 @@
+<div id="maindiv">
+  <div id=sidebar>
+    <input type="text" placeholder="New Channel Name" #newChannelName>
+    <input type="button" (click)="setNewChannel(newChannelName.value)" value="Create Channel">
+    <ul *ngFor="let channelName of allChannelsArray">
+      <li>{{channelName}}<button (click)="addMember()">Join Channel</button></li>
+    </ul> 
+  </div>
+  <div id=chatdiv>
+    <div id="chathistory">
+        
+    </div>
+    <div id="messagediv">
+        <input id="messagebox" type="text" placeholder="Type your message here" size="140"#newMessage  >
+        <input id="messagebutton" type="button" (click)="sendMessage(newMessage.value)" value="send">
+    </div>
+  </div>
+</div>
