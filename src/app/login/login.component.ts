@@ -23,10 +23,14 @@ export class LoginComponent implements OnInit {
           console.log(socialPlatform+" sign in data : " , userData);
           this.serve.setUserId(userData.id);
           this.router.navigate(['\chatscreen']);
+          localStorage.setItem("id", userData.id);
+          console.log(localStorage);
         }
       );
     }
   }
+
+
   ngOnInit() {
   }
 

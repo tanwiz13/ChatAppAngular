@@ -4,10 +4,12 @@ import { setRootDomAdapter } from '../../node_modules/@angular/platform-browser/
 import { HttpClient } from '@angular/common/http';
 import { Observable } from '../../node_modules/rxjs'
 import { map } from 'rxjs/operators';
+import { CanActivate } from '../../node_modules/@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
-export class ServerService {
+export class ServerService implements CanActivate{
   // url:string="https://chat.twilio.com/v2/Services";
   // channel:string="https://chat.twilio.com/v2/Services/IS42952ba64edc4d82ae71d3e8a91a9321/Channels"
   httpheaders = {
@@ -27,6 +29,18 @@ export class ServerService {
 
   setUserId(id:any){
     this.userId=id;
+  }
+
+  canActivate()
+  {
+    if(localStorage.getItem('id'))
+    {
+      return true;
+    }
+    else
+    {
+      false;
+    }
   }
   // setServer(): Observable<any>{
   //   return this.http.post<any>('https://chat.twilio.com/v2/Services','FriendlyName=ChatService',this.httpheaders);

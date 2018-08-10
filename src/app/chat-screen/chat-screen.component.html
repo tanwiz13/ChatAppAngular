@@ -3,7 +3,7 @@
     <input type="text" placeholder="New Channel Name" #newChannelName>
     <input type="button" (click)="setNewChannel(newChannelName.value)" value="Create Channel">
     <ul *ngFor="let channelName of allChannelsArray">
-      <li>{{channelName}}<button (click)="addMember()">Join Channel</button></li>
+      <li>{{channelName}}</li>
     </ul> 
   </div>
   <div id=chatdiv>
