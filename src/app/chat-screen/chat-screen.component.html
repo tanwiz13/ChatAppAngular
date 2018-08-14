@@ -9,7 +9,7 @@
     </ul>
     <input type="button" id="logoutbutton" (click)="logout()"value="Logout">
     <!-- <input type="button" id="deletebutton" (click)="delete()"value="delete"> -->
-    <input type="button" id="showbutton" value="show channels" (click)="showAllChannels()">
+    <!-- <input type="button" id="showbutton" value="show channels" (click)="showAllChannels()"> -->
     <ul *ngFor="let channelName of allChannelsArray">
       <li>{{channelName}}</li>
     </ul> 
@@ -18,7 +18,7 @@
       <div id="chathistory">
        <!-- <input type="button" id="chathistory" (click)="showChat()" value="show"> -->
         <ul *ngFor="let message of allMessages">
-            <li id="listdiv"><div id="textdiv"[ngStyle]="{'float':(message.from==this.username)?'right':'left'}">{{message.from}} : {{message.body}}</div></li><br/>
+            <li id="listdiv"><div id="textdiv"[ngStyle]="{'float':(message.from==this.username)?'right':'left'}"><b>{{message.from}} : </b>{{message.body}}</div></li><br/>
         </ul>
       </div>    
       <div id="messagediv">
