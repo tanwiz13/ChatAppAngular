@@ -22,7 +22,7 @@ export class ServerService {
 
   constructor(private http:HttpClient) { }
   // data='Hello'
-  sId:string="IScc535e84b05c40f6a1c17eaca9fb811f";
+  sId:string="IS2de21c6f55764d4c956e4168156aaaea ";
   // cId:string="CH548fa9c3306b4dabbe5b8f1d0d479f9a";
   allChannelsArray:any=[];
   username=localStorage.getItem("username");
