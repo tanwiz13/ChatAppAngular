@@ -18,7 +18,7 @@
       <div id="chathistory">
        <!-- <input type="button" id="chathistory" (click)="showChat()" value="show"> -->
         <ul *ngFor="let message of allMessages">
-            <li id="listdiv"><div id="textdiv" [ngStyle]="{'float':(message.from==this.username)?'right':'left'}">{{message.from}} : {{message.body}}</div></li><br/>
+            <li id="listdiv"><div id="textdiv"[ngStyle]="{'float':(message.from==this.username)?'right':'left'}">{{message.from}} : {{message.body}}</div></li><br/>
         </ul>
       </div>    
       <div id="messagediv">
