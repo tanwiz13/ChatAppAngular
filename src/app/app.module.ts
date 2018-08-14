@@ -12,6 +12,8 @@ import {
   GoogleLoginProvider,
 } from "angular-6-social-login";
 import { ServerService } from './server.service';
+import { ChatAuthService } from './chat-auth.service';
+import { UserIdService } from './user-id.service';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -29,15 +31,12 @@ const routes: Routes = [
   {
     path : '',
     component : LoginComponent,
+    canActivate:[UserIdService],
   },
   {
     path : 'chatscreen',
     component : ChatScreenComponent,
-  },
-  {
-    path : 'chatscreen',
-    component : ChatScreenComponent,
-    canActivate:[ServerService]
+    canActivate:[ChatAuthService]
   },
   {
     path:'**',

@@ -1,27 +1,94 @@
 #sidebar{
-    width:30%;
+    width:20%;
     position:absolute;
-    background-color: rgb(160, 71, 141);
-    height:605px;
+    background-color: #221050;
+    height:100vh;
     color:beige;
 }
+#searchbutton,#createbutton,#joinbutton{
+    border-radius: 2px;
+    background-color: beige;
+    height:30px;
+    border-radius:10px;
+    color:blue;
+    margin:5px;
+}
+#logoutbutton{
+    border-radius: 2px;
+    background-color: beige;
+    height:30px;
+    width:100px;
+    border-radius:10px;
+    color:blue;
+    bottom:0;
+    left:10px;
+    position: fixed;
+    margin-bottom: 5px;
+}
+/* #showbutton{
+    border-radius: 2px;
+    background-color: beige;
+    height:30px;
+    border-radius:10px;
+    color:blue;
+    width:80%;
+    margin:5px;
+    bottom:0;
+    position:fixed;
+    margin-bottom: 5px;
+
+} */
+#searchbar,#channelbar{
+    height:30px;
+    border-radius: 10px;
+}
 #chatdiv{
-    width:70%;
+    width:80%;
     float: right;
     position: relative;
+    height:100vh;
 }
 #chathistory{
     background-color: beige;
-    height:570px;
+    height:95vh;
+    width:100%;
+    float: right;
+    overflow-y:scroll;
 }
 #messagediv{
-    top:580px;
+    bottom:10px;
+    height:20px;
+    position:fixed;
+    width:100;
+    margin-bottom: 5px;
 }
 #messagebox{
     height: 30px;
     float:left;
+    border-radius: 10px;
 }
 #messagebutton{
     height: 40px;
     float:right;
+    border-radius: 10px;
+    width:100px;
 }
+#text{
+    width:450px;
+    word-wrap:break-word;
+}
+#textdiv{
+    /* height:25px; */
+    border-radius: 10px; 
+    width:450px;
+    background-color: #d5dbdb;
+    list-style: none;
+    word-break:break-all;
+    color:black;
+    
+    /* overflow: hidden; */
+ }
+ #listdiv {
+    color: beige; 
+  }
+  

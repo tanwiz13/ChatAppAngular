@@ -9,7 +9,7 @@ import { CanActivate } from '../../node_modules/@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class ServerService implements CanActivate{
+export class ServerService {
   // url:string="https://chat.twilio.com/v2/Services";
   // channel:string="https://chat.twilio.com/v2/Services/IS42952ba64edc4d82ae71d3e8a91a9321/Channels"
   httpheaders = {
@@ -23,49 +23,43 @@ export class ServerService implements CanActivate{
   constructor(private http:HttpClient) { }
   // data='Hello'
   sId:string="IScc535e84b05c40f6a1c17eaca9fb811f";
-  cId:string="CH548fa9c3306b4dabbe5b8f1d0d479f9a";
-  userId:string;
+  // cId:string="CH548fa9c3306b4dabbe5b8f1d0d479f9a";
   allChannelsArray:any=[];
+  username=localStorage.getItem("username");
 
-  setUserId(id:any){
-    this.userId=id;
-  }
-
-  canActivate()
-  {
-    if(localStorage.getItem('id'))
-    {
-      return true;
-    }
-    else
-    {
-      false;
-    }
-  }
   // setServer(): Observable<any>{
   //   return this.http.post<any>('https://chat.twilio.com/v2/Services','FriendlyName=ChatService',this.httpheaders);
   // }
+
+  getChannelId():Observable<any>{
+    return this.http.get<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels",this.httpheaders);
+  }
+
   setNewChannel(newChannelName :any): Observable<any>{
     return this.http.post<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels",'UniqueName='+newChannelName,this.httpheaders);
   }
   
-  // searchChannel():Observable<any>{
-  //   return  this.http.get("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels",this.httpheaders).pipe(map(data=>data)); 
-  // }
+  searchChannel(ChannelName:any):Observable<any>{
+    return  this.http.get("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels",this.httpheaders); 
+  }
 
   getChannels(): Observable<any>{
     return this.http.get<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels",this.httpheaders).pipe(map(data=>data));
   }
   
-  addMember():Observable<any>{
-    return this.http.post<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+this.cId+"/Members","Identity="+this.userId,this.httpheaders);
+  addMember(cId:any):Observable<any>{
+    return this.http.post<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+cId+"/Members","Identity="+this.username,this.httpheaders);
   }
 
-  getChat():Observable<any>{
-    return this.http.get<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+this.cId+"/Messages",this.httpheaders).pipe(map(data=>data));
+  getChat(cId:any):Observable<any>{
+    return this.http.get<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+cId+"/Messages",this.httpheaders).pipe(map(data=>data));
   }
 
-  sendMessage(str):Observable<any>{
-    return this.http.post<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+this.cId+"/Messages","ChannelSid="+this.cId+"&ServicesSid="+this.sId+"&Body="+str+"&From="+this.userId,this.httpheaders);
+  sendMessage(cId:any,message:any):Observable<any>{
+    return this.http.post<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/"+cId+"/Messages","ChannelSid="+cId+"&ServicesSid="+this.sId+"&Body="+message+"&From="+this.username,this.httpheaders);
   }
+
+  // deleteChannel():Observable<any>{
+  //   return this.http.delete<any>("https://chat.twilio.com/v2/Services/"+this.sId+"/Channels/CH508779e14eec431797da3d13e4f9d78c");
+  // }
 }

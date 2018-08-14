@@ -1,18 +1,29 @@
 <div id="maindiv">
   <div id=sidebar>
-    <input type="text" placeholder="New Channel Name" #newChannelName>
-    <input type="button" (click)="setNewChannel(newChannelName.value)" value="Create Channel">
+    <input type="text" id="channelbar" placeholder="New Channel Name" [(ngModel)]=ChannelName>
+    <input type="button" id="createbutton" (click)="setNewChannel()" value="Create Channel"><br/>
+    <input type="text" id="searchbar" placeholder ="search channel" [(ngModel)]=ChannelSearch>
+    <input type="button" id="searchbutton" (click)="searchChannel()" value="search">
+    <ul *ngFor = "let searchChannel of searchResult">
+      <li>{{searchChannel}}<input id="joinbutton" type="button" value="join" (click)="joinChannel()"></li>
+    </ul>
+    <input type="button" id="logoutbutton" (click)="logout()"value="Logout">
+    <!-- <input type="button" id="deletebutton" (click)="delete()"value="delete"> -->
+    <input type="button" id="showbutton" value="show channels" (click)="showAllChannels()">
     <ul *ngFor="let channelName of allChannelsArray">
       <li>{{channelName}}</li>
     </ul> 
   </div>
   <div id=chatdiv>
-    <div id="chathistory">
-        
-    </div>
-    <div id="messagediv">
-        <input id="messagebox" type="text" placeholder="Type your message here" size="140"#newMessage  >
-        <input id="messagebutton" type="button" (click)="sendMessage(newMessage.value)" value="send">
-    </div>
-  </div>
+      <div id="chathistory">
+       <!-- <input type="button" id="chathistory" (click)="showChat()" value="show"> -->
+        <ul *ngFor="let message of allMessages">
+            <li id="listdiv"><div id="textdiv" [ngStyle]="{'float':(message.from==this.username)?'right':'left'}">{{message.from}} : {{message.body}}</div></li>
+        </ul>
+      </div>    
+      <div id="messagediv">
+          <input id="messagebox" type="text" placeholder="Type your message here" size="150" [(ngModel)]=TextMessage>
+          <input id="messagebutton" type="button" (click)="sendMessage();" value="send">
+      </div>
+    </div> 
 </div>
